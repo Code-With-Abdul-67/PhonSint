@@ -1,6 +1,6 @@
 import phonenumbers
 from phonenumbers import geocoder, carrier, timezone
-import requests
+# import requests
 import logging
 import json
 import argparse
@@ -9,19 +9,29 @@ import argparse
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def print_banner():
-    banner = """
-   
-__________.__                    _________.__        __    
-\______   \  |__   ____   ____  /   _____/|__| _____/  |_  
- |     ___/  |  \ /  _ \ /    \ \_____  \ |  |/    \   __\ 
- |    |   |   Y  (  <_> )   |  \/        \|  |   |  \  |   
- |____|   |___|  /\____/|___|  /_______  /|__|___|  /__|   
-               \/            \/        \/         \/       
+    banner = """ 
+\033[38;2;75;0;130m
+    
 
-    ==================================================
+ ██▓███   ██░ ██  ▒█████   ███▄    █   ██████  ██▓ ███▄    █ ▄▄▄█████▓
+▓██░  ██▒▓██░ ██▒▒██▒  ██▒ ██ ▀█   █ ▒██    ▒ ▓██▒ ██ ▀█   █ ▓  ██▒ ▓▒
+▓██░ ██▓▒▒██▀▀██░▒██░  ██▒▓██  ▀█ ██▒░ ▓██▄   ▒██▒▓██  ▀█ ██▒▒ ▓██░ ▒░
+▒██▄█▓▒ ▒░▓█ ░██ ▒██   ██░▓██▒  ▐▌██▒  ▒   ██▒░██░▓██▒  ▐▌██▒░ ▓██▓ ░ 
+▒██▒ ░  ░░▓█▒░██▓░ ████▓▒░▒██░   ▓██░▒██████▒▒░██░▒██░   ▓██░  ▒██▒ ░ 
+▒▓▒░ ░  ░ ▒ ░░▒░▒░ ▒░▒░▒░ ░ ▒░   ▒ ▒ ▒ ▒▓▒ ▒ ░░▓  ░ ▒░   ▒ ▒   ▒ ░░   
+░▒ ░      ▒ ░▒░ ░  ░ ▒ ▒░ ░ ░░   ░ ▒░░ ░▒  ░ ░ ▒ ░░ ░░   ░ ▒░    ░    
+░░        ░  ░░ ░░ ░ ░ ▒     ░   ░ ░ ░  ░  ░   ▒ ░   ░   ░ ░   ░      
+          ░  ░  ░    ░ ░           ░       ░   ░           ░          
+                                                                      
+
+\033[0m
+
+<<<<<==================================================>>>>>
                         PhonSint
 A Comprehensive Information Tool to Hunt down Phone Numbers
-    ==================================================
+<<<<<==================================================>>>>>
+
+
     """
     print(banner)
 
@@ -56,15 +66,15 @@ def get_phone_number_info(phone_number: str):
         logging.debug(f"National format: {national_format}")
         
         # Get location details from external API (using country code)
-        country_code = parsed_number.country_code
-        try:
-            location_details_response = requests.get(f'https://restcountries.com/v3.1/alpha/{country_code}', timeout=5)
-            location_details_response.raise_for_status()  # Raise HTTPError for bad responses
-            location_details = location_details_response.json()
-            logging.debug(f"Location details: {location_details}")
-        except requests.RequestException as e:
-            logging.error(f"RequestException: {e}")
-            location_details = [{"error": "Could not retrieve location details"}]
+        # country_code = parsed_number.country_code
+        # try:
+        #     location_details_response = requests.get(f'https://restcountries.com/v3.1/alpha/{country_code}', timeout=5)
+        #     location_details_response.raise_for_status()  # Raise HTTPError for bad responses
+        #     location_details = location_details_response.json()
+        #     logging.debug(f"Location details: {location_details}")
+        # except requests.RequestException as e:
+        #     logging.error(f"RequestException: {e}")
+        #     location_details = [{"error": "Could not retrieve location details"}]
 
         return {
             "phone_number": phone_number,
@@ -74,7 +84,7 @@ def get_phone_number_info(phone_number: str):
             "is_valid": is_valid,
             "international_format": international_format,
             "national_format": national_format,
-            "location_details": location_details[0] if location_details else {}
+            # "location_details": location_details[0] if location_details else {}
         }
     except phonenumbers.NumberParseException as e:
         logging.error(f"NumberParseException: {e}")
