@@ -6,7 +6,7 @@
 
  sudo apt install git -y
 
- git clone https://github.com/Code-With-Abdul-67
+ git clone https://github.com/Code-With-Abdul-67/PhonSInt.git
 
  
  Usage:
