@@ -14,7 +14,7 @@ A Phone Osint tool to hunt down and gather info about Phone Numbers based on Pyt
 
  python3 PhonSint.py "Number with country code" 
 
-2- You can also add --ouput result.json to get the summary of phone number in a form of JSON file.
+ You can also add --ouput result.json to get the summary of phone number in a form of JSON file.
 
     
 
