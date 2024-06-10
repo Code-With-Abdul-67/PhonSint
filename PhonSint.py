@@ -1,6 +1,5 @@
 import phonenumbers
 from phonenumbers import geocoder, carrier, timezone
-# import requests
 import logging
 import json
 import argparse
@@ -65,17 +64,6 @@ def get_phone_number_info(phone_number: str):
         national_format = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.NATIONAL)
         logging.debug(f"National format: {national_format}")
         
-        # Get location details from external API (using country code)
-        # country_code = parsed_number.country_code
-        # try:
-        #     location_details_response = requests.get(f'https://restcountries.com/v3.1/alpha/{country_code}', timeout=5)
-        #     location_details_response.raise_for_status()  # Raise HTTPError for bad responses
-        #     location_details = location_details_response.json()
-        #     logging.debug(f"Location details: {location_details}")
-        # except requests.RequestException as e:
-        #     logging.error(f"RequestException: {e}")
-        #     location_details = [{"error": "Could not retrieve location details"}]
-
         return {
             "phone_number": phone_number,
             "country": country,
@@ -84,7 +72,6 @@ def get_phone_number_info(phone_number: str):
             "is_valid": is_valid,
             "international_format": international_format,
             "national_format": national_format,
-            # "location_details": location_details[0] if location_details else {}
         }
     except phonenumbers.NumberParseException as e:
         logging.error(f"NumberParseException: {e}")
