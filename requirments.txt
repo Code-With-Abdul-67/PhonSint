@@ -1,7 +1,6 @@
 phonenumbers
 geocoder
 carrier
-requests
 logging
 json
 argparse
