@@ -14,7 +14,7 @@
 
  <h2>Usage<h2/>
   
-- python3 PhonSint.py "Number with country code" 
+ python3 PhonSint.py "Number with country code" 
 
  You can also add --ouput result.json to get the summary of phone number in a form of JSON file.
 
