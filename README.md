@@ -1,18 +1,20 @@
 A Phone Osint tool to hunt down and gather info about Phone Numbers based on Python.
 
- Usage:-
+ <h2>Installation<h2/>
 
- sudo apt update && upgrade -y
+- sudo apt update && upgrade -y
 
- sudo apt install git -y
+- sudo apt install git -y
 
- git clone https://github.com/Code-With-Abdul-67/PhonSint.git
+- git clone https://github.com/Code-With-Abdul-67/PhonSint.git
 
- cd PhonSint
+- cd PhonSint
 
- pip3 install -r requirments.txt
+- pip3 install -r requirments.txt
 
- python3 PhonSint.py "Number with country code" 
+ <h2>Usage<h2/>
+  
+- python3 PhonSint.py "Number with country code" 
 
  You can also add --ouput result.json to get the summary of phone number in a form of JSON file.
 
