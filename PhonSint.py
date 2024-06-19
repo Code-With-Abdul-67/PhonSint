@@ -1,7 +1,6 @@
 import phonenumbers
 from phonenumbers import geocoder, carrier, timezone
 import logging
-import json
 import argparse
 
 # Configure logging
@@ -29,15 +28,34 @@ def print_banner():
                         PhonSint
 A Comprehensive Information Tool to Hunt down Phone Numbers
 <<<<<==================================================>>>>>
-
+                 Made by 0x-Cyber-Lunerr
+                       Version 1.0
+<<<<<==================================================>>>>>
 
     """
     print(banner)
 
-def get_phone_number_info(phone_number: str):
+def save_to_file_as_text(data, filename):
+    try:
+        with open(filename, 'w') as f:
+            for key, value in data.items():
+                f.write(f"{key}: {value}\n")
+        logging.info(f"Data saved to {filename}")
+        print(f"Data saved to {filename}")
+    except IOError as e:
+        logging.error(f"IOError: {e}")
+        print(f"Error: {e}")
+
+def main():
+    print_banner()
+    
+    parser = argparse.ArgumentParser(description="Get phone number information.")
+    parser.add_argument("phone_number", help="The phone number to look up.")
+    args = parser.parse_args()
+
     try:
         # Parse the phone number
-        parsed_number = phonenumbers.parse(phone_number)
+        parsed_number = phonenumbers.parse(args.phone_number)
         logging.debug(f"Parsed number: {parsed_number}")
         
         # Get country information
@@ -63,43 +81,29 @@ def get_phone_number_info(phone_number: str):
         # Format the number in national format
         national_format = phonenumbers.format_number(parsed_number, phonenumbers.PhoneNumberFormat.NATIONAL)
         logging.debug(f"National format: {national_format}")
-        
-        return {
-            "phone_number": phone_number,
-            "country": country,
-            "carrier": sim_carrier,
-            "time_zones": list(time_zones),
-            "is_valid": is_valid,
-            "international_format": international_format,
-            "national_format": national_format,
+        print("\n")
+        print("Final Report about your Target Phone Number")
+        print("<<--------------------------------------->>")
+        info = {
+            "01- Phone-number": args.phone_number,
+            "02- Country": country,
+            "03- Sim-Carrier": sim_carrier,
+            "04- Time-Zones": list(time_zones),
+            "05- Validity": is_valid,
+            "06- International-Format": international_format,
+            "07- National-Format": national_format,
         }
+        
+        for key, value in info.items():
+            print(f"{key}: {value}")
+       
+        save_prompt = input("Would you like to save the information in a form of text file? (yes/no): ").strip().lower()
+        if save_prompt in ['yes', 'y']:
+            filename = f"{args.phone_number}_info.txt"
+            save_to_file_as_text(info, filename)
     except phonenumbers.NumberParseException as e:
         logging.error(f"NumberParseException: {e}")
-        return {"error": str(e)}
-
-def save_to_file(data, filename):
-    try:
-        with open(filename, 'w') as f:
-            json.dump(data, f, indent=4)
-        logging.info(f"Data saved to {filename}")
-    except IOError as e:
-        logging.error(f"IOError: {e}")
-
-def main():
-    print_banner()
-    
-    parser = argparse.ArgumentParser(description="Get phone number information.")
-    parser.add_argument("phone_number", help="The phone number to look up.")
-    parser.add_argument("--output", "-o", help="The file to save the results to.")
-    args = parser.parse_args()
-
-    info = get_phone_number_info(args.phone_number)
-    if "error" in info:
-        print(f"Error: {info['error']}")
-    else:
-        print(json.dumps(info, indent=4))
-        if args.output:
-            save_to_file(info, args.output)
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
     main()
