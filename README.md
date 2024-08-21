@@ -18,5 +18,11 @@
 
  Added save to file function which allows you to save the report as a text file in local directory.
 
+
+<h2>Tested On:</h2>
+
+- Windows
+- Arch Linux
+- Kali Linux
     
 
