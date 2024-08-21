@@ -13,11 +13,10 @@
 - pip3 install -r requirments.txt
 
  <h2>Usage</h2>
-  
- python3 PhonSint.py "Number with country code"
+ 
+- python3 PhonSint.py "Number with country code"
 
- Added save to file function which allows you to save the report as a text file in local directory.
-
+- Added save to file function which allows you to save the report as a text file in local directory.
 
 <h2>Tested On:</h2>
 
