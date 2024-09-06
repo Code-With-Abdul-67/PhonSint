@@ -4,7 +4,7 @@
 
  <h2>Installation:</h2/>
 
- <h3>>For Kali Linux</h3>
+ <h3>-For Kali Linux</h3>
 
 - sudo apt update && upgrade -y
 
@@ -17,12 +17,12 @@
 - pip3 install -r requirments.txt
 
 
-<h3>>For Windows</h3>
+<h3>-For Windows</h3>
 
 <p>For Windows just Install the Modules given in Requirements.txt file and simply run the script in Command Prompt or Power Shell</p>
 
 
-<h3>>For Arch Linux</h3>
+<h3>-For Arch Linux</h3>
 
 <p>For running In Arch Linux do the same as Windows by Installing the modules and simply run it in Kitty Terminal</p>
 
