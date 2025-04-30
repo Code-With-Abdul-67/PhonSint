@@ -14,6 +14,7 @@
 
 - pip3 install -r requirments.txt
 
+- python3 PhonSint.py "your_phone_number"
 
 - Added save to file function which allows you to save the report as a text file in local directory.
 
