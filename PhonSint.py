@@ -28,7 +28,7 @@ def print_banner():
                         PhonSint
 A Comprehensive Information Tool to Hunt down Phone Numbers
 <<<<<==================================================>>>>>
-                 Made by 0x-Cyber-Lunerr
+                 Made by Code-With-Abdul
                        Version 1.0
 <<<<<==================================================>>>>>
 
